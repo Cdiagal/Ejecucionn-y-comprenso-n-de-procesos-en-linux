@@ -1,1 +1,1 @@
-# Ejecuci-n-y-comprensi-n-de-procesos-en-linux.
+# Ejecucion-y-comprension-de-procesos-en-linux.
