@@ -242,39 +242,112 @@ prueba hecha con el comando tres veces para aclarar que a cada proceso le da un 
 - **TIME** - El tiempo total de CPU que lleva consumiendo desde que arrancó el proceso.
 
 
-### Ejercicio 16 -  
+### Ejercicio 16 -  Ejecuta ps -f y observa la relación entre procesos padre e hijo.
 
 
 
 ```bash
-
+cdiagal@Carlos:~$ ps -f
+UID          PID    PPID  C STIME TTY          TIME CMD
+cdiagal      227     224  0 21:48 pts/0    00:00:00 -bash
+cdiagal      601     227  0 22:45 pts/0    00:00:00 nano
+cdiagal      603     227  0 22:45 pts/0    00:00:00 nano
+cdiagal      605     227  0 22:45 pts/0    00:00:00 nano
+cdiagal      647     227  0 23:03 pts/0    00:00:00 ps -f
 ```
 
-### Ejercicio 11 -
+### Ejercicio 17 - Usa ps -axf o pstree para mostrar el árbol de procesos y dibújalo
 
 
 
 ```bash
-
+    PID TTY      STAT   TIME COMMAND
+      1 ?        Ss     0:01 /sbin/init
+      2 ?        Sl     0:00 /init
+      6 ?        Sl     0:00  \_ plan9 --control-socket 7 --log-level 4 --server-fd 8 --pipe-fd 10 --log-truncate
+    222 ?        Ss     0:00  \_ /init
+    224 ?        S      0:00  |   \_ /init
+    227 pts/0    Ss     0:00  |       \_ -bash
+    601 pts/0    T      0:00  |           \_ nano
+    603 pts/0    T      0:00  |           \_ nano
+    605 pts/0    T      0:00  |           \_ nano
+    648 pts/0    R+     0:00  |           \_ ps -axf
+    229 pts/1    Ss     0:00  \_ /bin/login -f
+    426 pts/1    S+     0:00      \_ -bash
+     52 ?        S<s    0:00 /usr/lib/systemd/systemd-journald
+    101 ?        Ss     0:00 /usr/lib/systemd/systemd-udevd
+    111 ?        Ss     0:00 /usr/lib/systemd/systemd-resolved
+    112 ?        Ssl    0:00 /usr/lib/systemd/systemd-timesyncd
+    183 ?        Ss     0:00 /usr/sbin/cron -f -P
+    184 ?        Ss     0:00 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog
+    200 ?        Ss     0:00 /usr/lib/systemd/systemd-logind
+    203 ?        Ssl    0:00 /usr/libexec/wsl-pro-service -vv
+    219 hvc0     Ss+    0:00 /sbin/agetty -o -p -- \u --noclear --keep-baud - 115200,38400,9600 vt220
+    223 ?        Ssl    0:00 /usr/sbin/rsyslogd -n -iNONE
+    228 tty1     Ss+    0:00 /sbin/agetty -o -p -- \u --noclear - linux
+    240 ?        Ssl    0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-sign
+    405 ?        Ss     0:00 /usr/lib/systemd/systemd --user
+    407 ?        S      0:00  \_ (sd-pam)
 ```
 
-### Ejercicio 11 -
+### Ejercicio 18 - Ejecuta top o htop y localiza el proceso con mayor uso de CPU.
 
 
 
 ```bash
-
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+    651 cdiagal   20   0    9272   5456   3344 R   0.3   0.0   0:00.11 top
+      1 root      20   0   21692  12320   9328 S   0.0   0.1   0:01.14 systemd
+      2 root      20   0    3060   1584   1584 S   0.0   0.0   0:00.01 init-systemd(Ub
+      6 root      20   0    3076   1852   1760 S   0.0   0.0   0:00.00 init
+     52 root      19  -1   66744  15000  14120 S   0.0   0.1   0:00.78 systemd-journal
+    101 root      20   0   24872   6160   4928 S   0.0   0.0   0:00.53 systemd-udevd
+    111 systemd+  20   0   21452  12144  10208 S   0.0   0.1   0:00.17 systemd-resolve
+    112 systemd+  20   0   91020   7568   6688 S   0.0   0.0   0:00.31 systemd-timesyn
+    183 root      20   0    4236   2464   2288 S   0.0   0.0   0:00.02 cron
+    184 message+  20   0    9624   4576   4224 S   0.0   0.0   0:00.35 dbus-daemon
+    200 root      20   0   17960   8272   7392 S   0.0   0.1   0:00.20 systemd-logind
+    203 root      20   0 1756096  12144  10032 S   0.0   0.1   0:00.45 wsl-pro-service
+    219 root      20   0    3160   1760   1760 S   0.0   0.0   0:00.01 agetty
+    222 root      20   0    3064    880    880 S   0.0   0.0   0:00.00 SessionLeader
+    223 syslog    20   0  222508   5456   4400 S   0.0   0.0   0:00.18 rsyslogd
+    224 root      20   0    3080    880    880 S   0.0   0.0   0:00.05 Relay(227)
+    227 cdiagal   20   0    6072   4928   3344 S   0.0   0.0   0:00.09 bash
+    228 root      20   0    3116   1760   1760 S   0.0   0.0   0:00.01 agetty
+    229 root      20   0    6820   4400   3696 S   0.0   0.0   0:00.01 login
+    240 root      20   0  107012  21824  13024 S   0.0   0.1   0:00.16 unattended-upgr
+    405 cdiagal   20   0   20288  11088   9152 S   0.0   0.1   0:00.13 systemd
+    407 cdiagal   20   0   21144   3484   1760 S   0.0   0.0   0:00.00 (sd-pam)
+    426 cdiagal   20   0    6072   4928   3344 S   0.0   0.0   0:00.01 bash
 ```
+Por lo que se ve, el proceso que más CPU está consumiendo es el 651
 
-### Ejercicio 11 -
+### Ejercicio 19 - Ejecuta sleep 100 en segundo plano y busca su PID con ps.
 
 
 
 ```bash
+cdiagal@Carlos:~$ sleep 100 &
+[8] 666
+```
+```bash
+cdiagal@Carlos:~$ ps
+    PID TTY          TIME CMD
+    227 pts/0    00:00:00 bash
+    601 pts/0    00:00:00 nano
+    603 pts/0    00:00:00 nano
+    605 pts/0    00:00:00 nano
+    651 pts/0    00:00:00 top
+    664 pts/0    00:00:00 sleep
+    665 pts/0    00:00:00 sleep
+    666 pts/0    00:00:00 sleep
+    671 pts/0    00:00:00 ps
 
 ```
 
-### Ejercicio 11 -
+En este caso lo hice tres veces por prueba y me identifica los tres `sleep`
+
+### Ejercicio 20 - Finaliza un proceso con kill y comprueba con ps que ya no está.
 
 
 
@@ -283,3 +356,90 @@ prueba hecha con el comando tres veces para aclarar que a cada proceso le da un 
 ```
 
 </details>
+
+
+
+-----
+
+
+
+## Bloque 3. Práctica 🖥️
+<details>
+
+<summary>Clic para ver el contenido</summary>
+
+### Ejercicio 21 - Identifica el PID del proceso init/systemd y explica su función.
+
+
+```bash
+
+```
+
+### Ejercicio 21 - Identifica el PID del proceso init/systemd y explica su función.
+
+
+```bash
+
+```
+
+### Ejercicio 21 - Identifica el PID del proceso init/systemd y explica su función.
+
+
+```bash
+
+```
+
+### Ejercicio 21 - Identifica el PID del proceso init/systemd y explica su función.
+
+
+```bash
+
+```
+
+### Ejercicio 21 - Identifica el PID del proceso init/systemd y explica su función.
+
+
+```bash
+
+```
+
+### Ejercicio 21 - Identifica el PID del proceso init/systemd y explica su función.
+
+
+```bash
+
+```
+
+### Ejercicio 21 - Identifica el PID del proceso init/systemd y explica su función.
+
+
+```bash
+
+```
+
+### Ejercicio 21 - Identifica el PID del proceso init/systemd y explica su función.
+
+
+```bash
+
+```
+
+### Ejercicio 21 - Identifica el PID del proceso init/systemd y explica su función.
+
+
+```bash
+
+```
+
+### Ejercicio 30 - Identifica el PID del proceso init/systemd y explica su función.
+
+
+```bash
+
+```
+
+</details>
+
+
+
+-----
