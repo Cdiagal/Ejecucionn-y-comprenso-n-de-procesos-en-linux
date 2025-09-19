@@ -166,11 +166,11 @@ cdiagal@Carlos:~$ echo $PPID
 cdiagal@Carlos:~$ pidof systemd
 405
 ```
-pidof → comando que devuelve el identificador de proceso `(PID)` de un programa que está corriendo.
+pidof - comando que devuelve el identificador de proceso `(PID)` de un programa que está corriendo.
 
-systemd → es el sistema de inicio y gestor de servicios que arranca primero en muchas distribuciones Linux modernas. Se encarga de inicializar el sistema y gestionar procesos.
+systemd - es el sistema de inicio y gestor de servicios que arranca primero en muchas distribuciones Linux modernas. Se encarga de inicializar el sistema y gestionar procesos.
 
-405 → es el número de proceso `(PID)` asignado por el kernel a systemd.
+405 - es el número de proceso `(PID)` asignado por el kernel a systemd.
 
 Comprobación:
 
@@ -242,7 +242,7 @@ prueba hecha con el comando tres veces para aclarar que a cada proceso le da un 
 - **TIME** - El tiempo total de CPU que lleva consumiendo desde que arrancó el proceso.
 
 
-### Ejercicio 11 -
+### Ejercicio 16 -  
 
 
 
