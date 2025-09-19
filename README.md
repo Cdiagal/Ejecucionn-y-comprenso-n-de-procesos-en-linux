@@ -372,66 +372,69 @@ En este caso lo hice tres veces por prueba y me identifica los tres `sleep`
 
 
 ```bash
-
+cdiagal@Carlos:~$ ps -p 1 -o pid,cmd
+    PID CMD
+      1 /sbin/init
 ```
 
-### Ejercicio 21 - Identifica el PID del proceso init/systemd y explica su función.
+En este caso se solicita con `ps` el estado de los procesos
+`-p` - solicita el proceso junto con el número que se solicita que en este caso es `1` porque en Linux el primer proceso den espacio de usuario es `init`.
+
+### Ejercicio 22 - Explica qué ocurre con el PPID de un proceso hijo si su padre termina antes.
+
+
+Cuando un proceso inicia un proceso hijo y muere antes que este, el proceso hijo pasa a ser un hijo de init inmediatamente.
+
+### Ejercicio 23 - Ejecuta un programa que genere varios procesos hijos y observa sus PIDs con ps.
 
 
 ```bash
 
 ```
 
-### Ejercicio 21 - Identifica el PID del proceso init/systemd y explica su función.
+### Ejercicio 24 - Haz que un proceso quede en estado suspendido con Ctrl+Z y réanúdalo con fg.
 
 
 ```bash
 
 ```
 
-### Ejercicio 21 - Identifica el PID del proceso init/systemd y explica su función.
+### Ejercicio 25 - Lanza un proceso en segundo plano con & y obsérvalo con jobs.
 
 
 ```bash
 
 ```
 
-### Ejercicio 21 - Identifica el PID del proceso init/systemd y explica su función.
+### Ejercicio 26 - Explica la diferencia entre los estados de un proceso: Running, Sleeping, Zombie, Stopped.
 
 
 ```bash
 
 ```
 
-### Ejercicio 21 - Identifica el PID del proceso init/systemd y explica su función.
+### Ejercicio 27 - Usa ps -eo pid,ppid,stat,cmd para mostrar los estados de varios procesos.
 
 
 ```bash
 
 ```
 
-### Ejercicio 21 - Identifica el PID del proceso init/systemd y explica su función.
+### Ejercicio 28 - Ejecuta watch -n 1 ps -e y observa cómo cambian los procesos en tiempo real.
 
 
 ```bash
 
 ```
 
-### Ejercicio 21 - Identifica el PID del proceso init/systemd y explica su función.
+### Ejercicio 29 - Explica la diferencia entre ejecutar un proceso con & y con nohup.
 
 
 ```bash
 
 ```
 
-### Ejercicio 21 - Identifica el PID del proceso init/systemd y explica su función.
-
-
-```bash
-
-```
-
-### Ejercicio 30 - Identifica el PID del proceso init/systemd y explica su función.
+### Ejercicio 30 - Usa ulimit -a para ver los límites de recursos de procesos en tu sistema.
 
 
 ```bash
